@@ -15,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 // HTTP part of the tutorial.
 import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,11 @@ import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    InMemoryWebApiModule,
     HttpClientModule,
-    InMemoryWebApiModule
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation : false }
+    )
   ],
   providers: [ HeroService, MessageService ],
   bootstrap: [ AppComponent ]
